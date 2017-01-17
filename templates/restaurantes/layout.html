@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Ramon Sanchez Garcia">
+
+    <title>Practica 7 DAI - Django</title>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+
+
+    <!-- Custom CSS -->
+
+
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/custom.css'%}" rel="stylesheet">
+
+    <style type="text/css">
+  .nav-tabs li a {font-size:22px;}
+</style>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="{% static 'bootstrap/js/jquery-1.11.0.js'%}"></script>
+
+</head>
+
+<body>
+<br>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/restaurantes">Practica 7 - Restaurantes en Django</a>
+
+            </div>
+
+
+
+
+           {% if user.is_authenticated %}
+              <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Hola, {{user.username}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'auth_password_change' %}"><i class="glyphicon glyphicon-cog"></i>   Cambiar contraseña</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url 'auth_logout' %}?next=/restaurantes/"><i class="glyphicon glyphicon-off"></i>   Salir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
+            </div>
+
+		{% else %}
+
+
+
+
+
+                <div class="navbar-form navbar-right">
+					<a href="{% url 'auth_login' %}">Entrar | </a>
+					<a href="{% url 'registration_register' %}">Registrarse</a>
+            	</div>
+
+		{% endif %}
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+  
+<div class="container">
+
+	<div class="row">
+	            <div class="col-md-3">
+
+                <p class="lead">{{subtitle}}</p>
+
+                <div class="list-group" id="list-group">
+					<div class="top" id="top">
+        				
+
+
+
+
+						<div class="sub">
+							<div class="collapse list-group-submenu" id="sub_restaurantes">
+								<a href="{% url 'restaurantes' %}" class="list-group-item sub-item" data-parent="#sub_restaurantes" style="padding-left: 78px;">Mostrar restaurantes</a>
+
+                     			<a href="{% url 'agregar_restaurante' %}" class="list-group-item sub-item" data-parent="#sub_restaurantes" style="padding-left: 78px;">Añadir restaurante</a>
+							</div>
+   						</div>
+
+
+
+
+					 </div>
+
+
+                    <a href="{% url 'restaurantes' %}" class="list-group-item">Listar Restaurantes</a>
+                    <a href="{% url 'agregar_restaurante' %}" class="list-group-item">Agregar Restaurantes</a>
+                    <a href="" class="list-group-item">Eliminar Restaurante</a>
+                </div>
+
+
+	            </div>
+
+
+
+      {% block content %}
+
+      {% endblock %}
+
+	</div
+
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Página realizada para la asignatura de la ETSIIT, <b>Desarrollo de Aplicaciones para Internet</b></p>
+		    <p>Autor: Ramon Sanchez Garcia. <a href="mailto:chentaco@correo.ugr.es">Contacto</a></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="{% static 'bootstrap/js/jquery-1.11.0.js'%}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+
+<script type="text/javascript">
+var onResize = function() {
+  // apply dynamic padding at the top of the body according to the fixed navbar height
+  $("body").css("padding-top", $(".navbar-fixed-top").height());
+};
+
+// attach the function to the window resize event
+$(window).resize(onResize);
+
+// call it also when the page is ready after load or reload
+$(function() {
+  onResize();
+});
+</script>
+
+</body>
+
+</html>
+
+    </div>
+
