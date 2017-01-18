@@ -40,7 +40,7 @@ else:
     DB = CLIENT.test
 
     SECRET_KEY = '(bj+4l*up-6$h%l$4-qvd4tnl#(w8(n*v1!4hcb&i-=nqp*o_m'
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
     DEBUG = True
     DATABASES = {
         'default': {

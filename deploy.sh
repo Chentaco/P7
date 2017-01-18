@@ -1,6 +1,6 @@
 #!/bin/bash          
 
-heroku apps:create --region eu
+heroku apps:create practica7chentaco --region eu
 heroku addons:create heroku-postgresql:hobby-dev
 heroku config:set ON_HEROKU=1
 heroku config:set SECRET_KEY=`openssl rand -base64 32`
